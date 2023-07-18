@@ -1,3 +1,31 @@
-.scene{
+.conteudo{
     -fx-background-color: black;
+    -fx-font-family: Quicksand;
+}
+
+.titulo{
+    -fx-text-fill: #48b2ee;
+    -fx-font-size: 36px;
+}
+
+.numero{
+    -fx-text-fill: #abc;
+    -fx-font-size: 28px;
+}
+
+.botoes{
+     -fx-background-color: #fff;
+     -fx-text-fill: #48b2ee;
+     -fx-font-size: 28px;
+     -fx-min-width: 60px;
+     -fx-min-height: 60px;
+     -fx-background-radius: 30px;
+}
+
+.verde{
+    -fx-text-fill: green;
+}
+
+.vermelho{
+    -fx-text-fill: red;
 }
