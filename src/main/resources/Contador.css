@@ -1,3 +1,15 @@
+
+.bemvindo{
+    -fx-background-color: black;
+}
+
+.labelBemVindo{
+    -fx-text-fill: #48b2ee;
+    -fx-background-color: black;
+    -fx-font-family: Quicksand;
+    -fx-font-size: 36px;
+}
+
 .conteudo{
     -fx-background-color: black;
     -fx-font-family: Quicksand;

@@ -12,7 +12,11 @@ import javafx.stage.Stage;
 public class Contador extends Application {
     private int contador = 0;
 
-    private void atualizaLabelNumero(Label label){
+    private Stage janela;
+    private Scene passo1;
+    private Scene passo2;
+
+    private void atualizaLabelNumero(Label label) {
         label.setText(Integer.toString(contador));
 
         label.getStyleClass().remove("verde");
@@ -27,6 +31,43 @@ public class Contador extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        janela = stage;
+
+        criarPasso1();
+        criarPasso2();
+
+        janela.setScene(passo1);
+        janela.setTitle("Contador @nbeverton");
+        janela.show();
+
+    }
+
+    private void criarPasso1() {
+        Label labelBemVindo = new Label("Bem vindo");
+        labelBemVindo.getStyleClass().add("labelBemVindo");
+
+        Button proximoPasso = new Button("Clique para começar!");
+        proximoPasso.setOnAction(e -> {
+            janela.setScene(passo2);
+            janela.setTitle("Contador @nbeverton");
+        });
+
+        VBox boxBemVindo = new VBox();
+        boxBemVindo.setAlignment(Pos.CENTER);
+        boxBemVindo.getStyleClass().add("bemvindo");
+        boxBemVindo.setSpacing(20);
+        boxBemVindo.getChildren().add(labelBemVindo);
+        boxBemVindo.getChildren().add(proximoPasso);
+
+        String caminhoCSS = getClass()
+                .getResource("/Contador.css")
+                .toExternalForm();
+
+        passo1 = new Scene(boxBemVindo, 400, 400);
+        passo1.getStylesheets().add(caminhoCSS);
+    }
+
+    private void criarPasso2(){
 
         Label labelTitulo = new Label("Contador");
         labelTitulo.getStyleClass().add("titulo");
@@ -62,16 +103,15 @@ public class Contador extends Application {
         boxPrincipal.getChildren().add(labelNumero);
         boxPrincipal.getChildren().add(boxbotoes);
 
+
         String caminhoCSS = getClass()
                 .getResource("/Contador.css")
                 .toExternalForm();
 
-        Scene cenaPrincipal = new Scene(boxPrincipal, 400, 400);
-        cenaPrincipal.getStylesheets().add(caminhoCSS);
-        cenaPrincipal.getStylesheets().add("https://fonts.googleapis.com/css2?family=Quicksand");
+        passo2 = new Scene(boxPrincipal, 400, 400);
+        passo2.getStylesheets().add(caminhoCSS);
+        passo2.getStylesheets().add("https://fonts.googleapis.com/css2?family=Quicksand");
 
-        stage.setScene(cenaPrincipal);
-        stage.show();
     }
 
     public static void main(String[] args) {
